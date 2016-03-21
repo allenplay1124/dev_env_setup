@@ -1,6 +1,20 @@
 #!/bin/bash
 # Get OS codename
-codename=lsb_release -cs
+codename="$(lsb_release -cs)"
+
+if [ ${codename} = 'rosa' ]; then
+    codename=trusty
+elif [ ${codename} = 'rafaela' ]; then
+    codename=trusty
+elif [ ${codename} = 'rebecca' ]; then
+    codename=trusty
+elif [ ${codename} = 'qiana' ]; then
+    codename=trusty
+elif [ ${codename} = 'maya' ]; then
+    codename=precise
+else
+    codename=codename
+fi
 
 sudo apt-get update
 sudo apt-get -y upgrade
@@ -10,15 +24,15 @@ sudo apt-get autoremove
 ## install nginx
 wget http://nginx.org/keys/nginx_signing.key
 sudo apt-key add nginx_signing.key
-sudo echo deb http://nginx.org/packages/mainline/ubuntu/ $codename nginx > /etc/apt/sources.list.d/nginx.list
-sudo echo deb-src http://nginx.org/packages/mainline/ubuntu/ $codename nginx >> /etc/apt/sources.list.d/nginx.list
+sudo echo deb http://nginx.org/packages/mainline/ubuntu/ ${codename} nginx > /etc/apt/sources.list.d/nginx.list
+sudo echo deb-src http://nginx.org/packages/mainline/ubuntu/ ${codename} nginx >> /etc/apt/sources.list.d/nginx.list
 sudo apt-get update
 sudo apt-get -y install nginx
 
 ## install mariadb
 sudo apt-get install software-properties-common
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-sudo add-apt-repository -y 'deb [arch=amd64,i386] http://mirror.mephi.ru/mariadb/repo/10.1/ubuntu wily main'
+sudo add-apt-repository -y "deb [arch=amd64,i386] http://mirror.mephi.ru/mariadb/repo/10.1/ubuntu ${codename} main"
 sudo apt-get update
 sudo apt-get -y install mariadb-server
 
