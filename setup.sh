@@ -43,3 +43,51 @@ sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install -y php7.0 php7.0-fpm libapache2-mod-php7.0 php7.0 php7.0-common php7.0-gd php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-intl php7.0-xsl php7.0-mbstring php7.0-zip php7.0-bcmath
 sudo apt-get install -y php5 php5-fpm php5-mhash php5-mcrypt php5-curl php5-cli php5-mysql php5-gd php5-intl php5-xsl
+
+## install git
+sudo apt-get install -y libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+sudo git clone https://github.com/git/git.git
+cd git
+while read -r -p 'Select install git version ? (If you want get git version list, input "L")' response
+do
+    if [ "${response}" = "L" ]; then
+        git tag
+    elif [ -n "$(git tag | grep ${response})" ]; then
+        tag="$(git tag | grep ${response})"
+        break;
+    fi
+done
+
+sudo git checkout ${tag}
+sudo make prefix=/usr/local all
+sudo make prefix=/usr/local install
+
+cd ../
+sudo rm -rf git/
+
+## install nodejs
+sudo apt-get install -y python-software-properties python g++ make
+sudo apt-get install -y wget curl build-essential openssl libssl-dev
+sudo git clone https://github.com/nodejs/node.git
+cd node
+while read -r -p 'Select install nodejs version ? (If you want get nodejs version list, input "L")' response
+do
+    if [ "${response}" = "L" ]; then
+        git tag
+    elif [ -n "$(git tag | grep ${response})" ]; then
+        tag="$(git tag | grep ${response})"
+        break;
+    fi
+done
+sudo git checkout ${tag}
+sudo ./configure
+sudo make && make install
+
+## install npm
+sudo wget https://npmjs.org/install.sh --no-check-certificate
+sudo chmod 777 install.sh
+sudo ./install.sh
+cd ../
+rm -rf node
+
+echo "install success!"
