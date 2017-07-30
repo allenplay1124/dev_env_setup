@@ -12,7 +12,7 @@ elif [ ${codename} = 'qiana' ]; then
     codename=trusty
 elif [ ${codename} = 'maya' ]; then
     codename=precise
-elif [${codename} = 'sonya']; then
+elif [${codename} = 'sonya' ]; then
     codename=xenial
 else
     codename=codename
