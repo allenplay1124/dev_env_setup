@@ -12,6 +12,8 @@ elif [ ${codename} = 'qiana' ]; then
     codename=trusty
 elif [ ${codename} = 'maya' ]; then
     codename=precise
+elif [${codename} = 'sonya']; then
+    codename=xenial
 else
     codename=codename
 fi
@@ -20,6 +22,9 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 sudo apt-get autoremove
+
+## fix chinese font error
+sudo apt-get remove fonts-arphic-ukai fonts-arphic-uming
 
 ## install nginx
 wget http://nginx.org/keys/nginx_signing.key
