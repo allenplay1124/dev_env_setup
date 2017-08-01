@@ -18,9 +18,9 @@ elif [ ${codename} = 'maya' ]; then
 elif [ ${codename} = 'sonya' ]; then
     codename=xenial
 else
-    codename=codename
+    codename=${codename}
 fi
-echo ${codename}
+
 while read -r -p "Your OS version is ${codename}" response
 do
     if [ "${response}" = "Y" ]; then
