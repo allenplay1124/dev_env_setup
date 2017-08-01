@@ -20,7 +20,7 @@ elif [ ${codename} = 'sonya' ]; then
 else
     codename=codename
 fi
-
+echo ${codename}
 while read -r -p "Your OS version is ${codename}" response
 do
     if [ "${response}" = "Y" ]; then
