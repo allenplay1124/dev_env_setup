@@ -1,4 +1,7 @@
 #!/bin/bash
+# install isb-release model
+sudo apt-get update
+sudo apt-get -y install lsb-release
 # Get OS codename
 codename="$(lsb_release -cs)"
 
