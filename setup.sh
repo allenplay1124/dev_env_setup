@@ -21,7 +21,7 @@ else
     codename=${codename}
 fi
 
-while read -r -p "Your OS version is ${codename}" response
+while read -r -p "Is your OS version ${codename} ?(Y/N)" response
 do
     if [ "${response}" = "Y" ]; then
         break;
