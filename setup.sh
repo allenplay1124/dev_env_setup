@@ -53,12 +53,12 @@ sudo apt-get -y install mariadb-server
 
 ## install php5.6 and php7
 sudo apt-get install -y python-software-properties
-sudo add-apt-repository -y ppa:ondrej/php5-5.6
+
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
-sudo apt-get install -y php7.0 php7.0-fpm libapache2-mod-php7.0 php7.0 php7.0-common php7.0-gd php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-intl php7.0-xsl php7.0-mbstring php7.0-zip php7.0-bcmath
-sudo apt-get install -y php5 php5-fpm php5-mhash php5-mcrypt php5-curl php5-cli php5-mysql php5-gd php5-intl php5-xsl
-
+sudo apt-get install -y php7.0 php7.0-fpm libapache2-mod-php7.0 php7.0 php7.0-common php7.0-gd php7.0-mysql php7.0-cli php7.0-mcrypt php7.0-curl php7.0-intl php7.0-xsl php7.0-mbstring php7.0-zip php7.0-bcmath
+sudo apt-get install -y php5.6 php5.6-fpm php5.6-common php5.6-mcrypt php5.6-gmp php5.6-curl php5.6-cli php5.6-mysql php5.6-gd php5.6-intl php5.6-xsl php5.6-mbstring php5.6-xml
+sudo apt-get install -y php-mongodb php-redis php-geoip
 ## install git
 sudo apt-get install -y libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
 sudo git clone https://github.com/git/git.git
