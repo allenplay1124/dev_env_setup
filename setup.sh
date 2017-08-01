@@ -21,13 +21,20 @@ else
     codename=codename
 fi
 
+while read -r -p "Your OS version is ${codename}" response
+do
+    if [ "${response}" = "Y" ]; then
+        break;
+    fi
+done
+
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 sudo apt-get autoremove
 
 ## fix chinese font error
-sudo apt-get remove fonts-arphic-ukai fonts-arphic-uming
+sudo apt-get -y remove fonts-arphic-ukai fonts-arphic-uming
 
 ## install nginx
 wget http://nginx.org/keys/nginx_signing.key
